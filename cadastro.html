@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="cadastro.css" rel="stylesheet">
+    <title>Cadastro | MOOVIE</title>
+    <link rel="icon" href="images/logocolorida.ico">
+</head>
+<body>
+  <section class="formlogin-container">
+    <div class="content">
+        <div id="titulologin">
+          <h2>CADASTRO</h2>
+        </div>
+        <div id="formulario">
+          <div id="user-error">Usuário já está sendo usado.</div>
+          <div id="email-error">Email já está sendo usado.</div>
+          <div id="senha-error">As senhas estão diferentes.</div>
+        <form action="cadastro.php" method="POST" onsubmit="return validarSenha();">
+          <label id="lblusuario" for="usuario">Usuário:</label>
+          <input type="text" id="usuario" placeholder="Usuário..." name="usuario" autocomplete="off" required>
+
+          <label id="lblemail" for="email">E-mail:</label>
+          <input type="email" id="email" placeholder="Email..." name="email" autocomplete="off" required>
+
+          <label class="lblsenha"for="senha">Senha:</label>
+          <input type="password" id="senha" placeholder="Senha..." name="senha" required>
+
+          <label class="lblsenha" for="confirmarSenha">Confirmar Senha:</label>
+          <input type="password" id="confirmarSenha" placeholder="Confirmar senha..."required>
+
+        </div>
+        <div id="botoes">
+          <input id="submit" type="submit" value="Cadastrar">
+        </div>
+  </section>
+</body>
+</html>
+<body>
+
+</form>
+<script src="cadastro.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="endgame.css" rel="stylesheet">
+    <title>Avengers: Endgame (2019) | MOOVIE</title>
+    <link rel="icon" href="../images/logocolorida.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="header-home">
+        <nav class="navbar-menu">
+                <a class="logo" href="../home.html">M<span>OO</span>VIE</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../home.html">HOME</a></li>
+                <li class="nav-item"><a href="#">FILMES</a></li>
+                <li class="nav-item"><a href="#">REVIEWS</a></li>
+                <li class="nav-item"><a href="#">BUSCA</a></li>
+                <li class="nav-item"><a href="#">PERFIL</a></li>
+            </ul>
+            <div class="menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <main>
+            <section class="home">
+                <div id="poster"></div>
+                <div class="text">
+                    <section class="titulo">
+                        <h1 id="nome">Vingadores: Ultimato</h1>
+                        <h2 id="ano-direcao">2019 | Dirigido por Anthony Russo, Joe Russo</h2>
+                    </section>
+                    <section class="desc">
+                        <h1 id="sinopse">Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.</h1>
+                    </section>
+                    <div class="line"></div>
+                    <section class="cast">
+                        <button class="atores" onmouseover="exibirBalao(this, 'Tony Stark/Homem de Ferro')" onmouseout="ocultarBalao()">Robert Downey Jr.</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Stephen Strange/Doutor Estranho')" onmouseout="ocultarBalao()" >Benedict Cumberbatch</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Steve Rogers/Capitão América')" onmouseout="ocultarBalao()">Chris Evans</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Bruce Banner/Hulk')" onmouseout="ocultarBalao()">Mark Ruffalo</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Thor Odinson')" onmouseout="ocultarBalao()">Chris Hemsworth</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Natasha Romanoff/Viúva Negra')" onmouseout="ocultarBalao()">Scarlett Johansson</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Clint Barton/Gavião Arqueiro')" onmouseout="ocultarBalao()">Jeremy Renner</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'James Rhodes/Máquina de combate')" onmouseout="ocultarBalao()">Don Cheadle</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Scott Lang/Homem Formiga')" onmouseout="ocultarBalao()">Paul Rudd</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Peter Parker/Homem Aranha')" onmouseout="ocultarBalao()">Tom Holland</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'TChalla/Pantera Negra')" onmouseout="ocultarBalao()">Chadwick Boseman</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Carol Denvers/Capitã Marvel')" onmouseout="ocultarBalao()">Brie Larson</button>
+                        <button class="atores" onmouseover="exibirBalao(this, 'Nebula')" onmouseout="ocultarBalao()">Karen Gillan</button>
+                    </section>
+                    <div id="balao">Texto do balão</div>
+                </div>
+                <aside class="box">
+                    <div class="rating">
+                        <span class="estrela" onclick="selecionarEstrelas(1)"><i class="fa-sharp fa-solid fa-star"></i></span>
+                        <span class="estrela" onclick="selecionarEstrelas(2)"><i class="fa-sharp fa-solid fa-star"></i></span>
+                        <span class="estrela" onclick="selecionarEstrelas(3)"><i class="fa-sharp fa-solid fa-star"></i></span>
+                        <span class="estrela" onclick="selecionarEstrelas(4)"><i class="fa-sharp fa-solid fa-star"></i></span>
+                        <span class="estrela" onclick="selecionarEstrelas(5)"><i class="fa-sharp fa-solid fa-star"></i></span>
+                      </div>
+                      <div class="button">
+                      <button id="limpar" onclick="limparDestaque()">Limpar</button>
+                    </div>
+                </aside>
+            </section>
+
+    </main>
+    <script src="endgame.js"></script>
+</body>
+</html>
