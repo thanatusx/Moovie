@@ -34,10 +34,8 @@
     <title>Registro | MOOVIE</title>
 </head>
 <body>
-    <?php include("header.html"); ?>
-
-    <section class="register-form" style="background: url(/images/background/banner.webp);">
-        <div class="container textcenter">
+    <section class="register-form" style="background-image: url(images/background/banner.webp);background-size: cover;background-repeat: repeat;">
+        <div class="formlogin-container text-center">
             <div id="titulologin">
                 <h1>CADASTRO</h1>
             </div>
