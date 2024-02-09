@@ -1,14 +1,13 @@
 <?php
-$host = 'localhost';
-$dbname = 'moovie';
-$username = 'root';
-$password = '';
+    $db_server = "localhost";
+    $db_user = "root";
+    $db_pass = "";
+    $db_name = "moovie";
+    $conn = "";
 
-try {
-    $conexao = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Erro de conexão com o banco de dados: " . $e->getMessage();
-    exit;
-}
+    try{
+        $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
+    }catch (mysqli_sql_exception) {
+        echo "Erro de conexão com o banco de dados";
+     }
 ?>
