@@ -1,11 +1,13 @@
-<?php include("conexao.php"); ?>
+<?php
+    include("conexao.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/logomoovie.ico">
+    <link rel="icon" href="images/icons/logomoovie.ico">
 
     <!-- BIBLIOTECAS PERSONALIZADAS -->
     <link
@@ -34,30 +36,37 @@
     <title>Registro | MOOVIE</title>
 </head>
 <body>
-    <section class="register-form" style="background-image: url(images/background/banner.webp);background-size: cover;background-repeat: repeat;">
-        <div class="formlogin-container text-center">
+    <section class="register-form" style="background-image: url(images/background/banner.svg);">
+        <div class="formlogin-container">
             <div id="titulologin">
-                <h1>CADASTRO</h1>
+                <h1 class="text-center">CADASTRO</h1>
             </div>
-            <div id="user-error">Usuário já está sendo usado.</div>
-            <div id="email-error">Email já está sendo usado.</div>
-            <div id="senha-error">As senhas estão diferentes.</div>
+            <div class="text-center" id="user-error">Usuário já está sendo usado.</div>
+            <div class="text-center" id="email-error">Email já está sendo usado.</div>
+            <div class="text-center" id="senha-error">As senhas estão diferentes.</div>
 
-            <form action="register.php" method="POST" onsubmit="return validarSenha();">
+            <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST" onsubmit="return validarSenha();">
                 <label id="lblusuario" for="usuario">Usuário:</label>
-                <input type="text" id="usuario" placeholder="Usuário..." name="usuario" autocomplete="off" required>
+                <div class="text-center">
+                    <input class="inputtxt" type="text" id="usuario" placeholder="Usuário..." name="user" autocomplete="off" required>
+                </div>
 
-                <label id="lblemail" for="email">E-mail:</label>
-                <input type="email" id="email" placeholder="Email..." name="email" autocomplete="off" required>
+                <label id="lblemail">E-mail:</label>
+                <div class="text-center">
+                    <input class="inputtxt" type="email" id="email" placeholder="Email..." name="email" autocomplete="off" required>
+                </div>
 
                 <label class="lblsenha"for="senha">Senha:</label>
-                <input type="password" id="senha" placeholder="Senha..." name="senha" required>
+                <div class="text-center">
+                    <input class="inputtxt" type="password" id="senha" placeholder="Senha..." name="password" required>
+                </div>
 
                 <label class="lblsenha" for="confirmarSenha">Confirmar Senha:</label>
-                <input type="password" id="confirmarSenha" placeholder="Confirmar senha..."required>
-
-                <div id="botoes">
-                    <input id="submit" type="submit" value="Cadastrar">
+                <div class="text-center">
+                    <input class="inputtxt" type="password" id="confirmarsenha" placeholder="Confirmar senha..."required>
+                </div>
+                <div class="text-center botoes">
+                    <input class="" id="submit" type="submit" value="Cadastrar">
                 </div>
             </form>
         </div>
@@ -82,4 +91,43 @@
 </body>
 </html>
 
-<?php mysqli_close($conn); ?>
+<?php 
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $username = $_POST['user'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+    
+        $sql = "SELECT COUNT(*) AS count_usuario FROM usuarios WHERE usuario = :usuario";
+        $usuarioExistente = ($resultado['count_usuario'] > 0);
+        
+        $sql = "SELECT COUNT(*) AS count_email FROM usuarios WHERE email = :email";
+        $statement = $conexao->prepare($sql);
+        $statement->bindParam(':email', $email);
+        $statement->execute();
+        $resultado = $statement->fetch();
+        
+        $emailExistente = ($resultado['count_email'] > 0);
+        
+        if ($usuarioExistente || $emailExistente) {
+            $erroHtml = '';
+            if ($usuarioExistente) {
+                header('Location: cadastro.html?error=1');
+            }
+            if ($emailExistente) {
+                header('Location: cadastro.html?error=2');
+        
+            }
+            echo $erroHtml;
+            exit;
+        }
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (user, email, password) VALUES ('$username', '$email', '$hash')";
+    
+        
+            mysqli_query($conn, $sql);
+            echo "User is registered";
+        
+    }
+
+mysqli_close($conn); ?>
