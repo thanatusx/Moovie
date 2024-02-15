@@ -1,5 +1,6 @@
 <?php
     include("conexao.php");
+    echo "chegou";
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username = $_POST['user'];
         $password = $_POST['password'];

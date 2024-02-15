@@ -42,28 +42,28 @@
                 <div id="sql-error">Ocorreu um erro.</div>
             </div>
 
-            <form id="form" action="register.php" method="POST" onsubmit="return validarSenha();">
+            <form id="form" action="register.php" method="POST">
                 <div class="campo">
-                    <label id="lblusuario" for="usuario">Usuário:</label>
-                    <div class="text-center"><input class="inputtxt required" type="text" id="usuario" name="user" autocomplete="off"></div>
+                    <label id="lblusuario">Usuário:</label>
+                    <div class="text-center"><input class="inputtxt required" type="text" id="usuario" name="user" autocomplete="off" oninput="nameValidate()"></div>
                     <span class="span-required">Usuário deve ter no mínimo 3 caracteres.</span>
                 </div>
                 
                 <div class="campo">
                     <label id="lblemail">E-mail:</label>
-                    <div class="text-center"><input class="inputtxt required" type="email" id="email" name="email" autocomplete="off"></div>
+                    <div class="text-center"><input class="inputtxt required" type="email" id="email" name="email" autocomplete="off" oninput="emailValidate()"></div>
                     <span class="span-required">Digite um e-mail válido.</span>
                 </div>
                 
                 <div class="campo password-container">
-                    <label class="lblsenha"for="senha">Senha:</label>
-                    <div class="text-center"><input class="inputtxt required" type="password" id="senha" name="password"></div>
+                    <label class="lblsenha">Senha:</label>
+                    <div class="text-center"><input class="inputtxt required" type="password" id="senha" name="password" oninput="mPasswordValidate()"></div>
                     <ion-icon name="eye-outline" id="eye"></ion-icon>
                     <span class="span-required">Senha deve conter no mínimo 8 caracteres.</span>
                 </div>
                 <div class="campo">
-                    <label class="lblsenha" for="confirmarSenha">Confirmar senha:</label>
-                    <div class="text-center"><input class="inputtxt required" type="password" id="confirmarsenha"></div>
+                    <label class="lblsenha">Confirmar senha:</label>
+                    <div class="text-center"><input class="inputtxt required" type="password" id="confirmarsenha" oninput="comparePassword()"></div>
                     <span class="span-required">As senhas devem ser compatíveis.</span>
                 </div>
                 <div class="text-center botoes">
