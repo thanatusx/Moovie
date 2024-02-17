@@ -1,13 +1,11 @@
-<?php
-    include("conexao.php");
-?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/logomoovie.ico">
+    <link rel="icon" href="images//icons/logomoovie.ico">
 
     <!-- BIBLIOTECAS PERSONALIZADAS -->
     <link
@@ -36,8 +34,38 @@
     <title>Home | MOOVIE</title>
 </head>
 <body>
-    <?php include('header.html'); ?>
+    <!-- NAVBAR DESKTOP -->
+    <header class="header py-2 d-none d-md-none d-lg-block" style="background-color: var(--rich-black);">
+        <nav class="navbar navbar-custom container mt-3 mb-2">
+            <div>
+                <a class="logotxt" href="home.html">M<span>OO</span>VIE</a>
+            </div>
+            <ul class="text-center d-flex">
+                <li class="px-5 nav-item"><a href="home.php">HOME</a></li>
+                <li class="px-5 nav-item"><a href="movies.php">FILMES</a></li>
+                <li class="px-5 nav-item"><a href="profile.php">PERFIL</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <!-- NAVBAR MOBILE -->
+    <header class="header py-2 d-md-block d-lg-none" style="background-color: var(--rich-black);">
+        <nav class="navbar navbar-custom container d-flex mt-3 mb-2">
+            <div>
+                <a class="logotxt" href="home.html">M<span>OO</span>VIE</a>
+            </div>
+            <ul class="nav-menu text-center px-0 z-3">
+                <li class="py-3 nav-item"><a href="home.php">HOME</a></li>
+                <li class="py-3 nav-item"><a href="movies.php">FILMES</a></li>
+                <li class="py-3 nav-item"><a href="profile.php">PERFIL</a></li>
+            </ul>
+            <div class="menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
     <!-- BIBLIOTECA PERSONALIZADA -->
     <script src="script/header.js"></script>
 
@@ -55,7 +83,3 @@
     </script>
 </body>
 </html>
-
-<?php
-    mysqli_close($conn);
-?>

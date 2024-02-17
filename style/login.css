@@ -33,14 +33,12 @@
     border-radius: 10px;
     background-color: var(--rich-black);
     width: 500px;
-    height: 650px;
+    height: 500px;
     display: flex;
     flex-direction: column;
 }
 
-.campo{
-    height: 99px;
-}
+
 
 .titulologin{
     height: 120px;
@@ -61,21 +59,7 @@
     display: none;
 }
 
-#email-error{
-    font: 500 14px/20px "Inter", sans-serif;
-    color: var(--selective-yellow);
-    padding-top: 5px;
-    display: none;
-}
-
 #password-error{
-    font: 500 14px/20px "Inter", sans-serif;
-    color: var(--selective-yellow);
-    padding-top: 5px;
-    display: none;
-}
-
-#sql-error{
     font: 500 14px/20px "Inter", sans-serif;
     color: var(--selective-yellow);
     padding-top: 5px;
@@ -90,7 +74,7 @@
 }
 
 #form{
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .formlogin-container label{
@@ -114,11 +98,8 @@
     transition: .3s;
 }
 
-.span-required{
-    display: none;
-    color: var(--engineering-orange);
-    font: 400 14px "Inter", sans-serif;
-    margin: 0 0 0 3px;
+.campo{
+    height: 99px;
 }
 
 .password-container{
@@ -134,14 +115,29 @@
     font-size: 22px;
 }
 
+.botoes{
+    margin-top: 10px;
+}
+
+.botoes a{
+    padding: 10px 0px;
+    color: var(--rosa);
+    margin: 0 0 0 20px;
+    font: 500 20px/30px "Poppins", sans-serif;
+}
+
+.botoes a:hover{
+    color: var(--magenta);
+    transition: .4s;
+}
+
 .formlogin-container #submit{
     background-color: var(--rosa);
     border: none;
     border-radius: 15px;
     padding: 10px 25px;
     color: var(--platinum);
-    cursor: pointer;
-    margin-top: 10px;
+    margin: 0 20px 0 0;
     font: 500 20px/30px "Poppins", sans-serif;
     }
 
