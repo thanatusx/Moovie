@@ -6,6 +6,73 @@ if(isset($_SESSION['id']) && isset($_SESSION['user'])){
     header("Location: home.php");
     exit();
 }
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $username = $_POST['user'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $cpassword = $_POST['cpassword'];
+    $username_length = strlen($username);
+    $password_length = strlen($password);
+
+
+    $sqluser = "SELECT COUNT(*) AS count_user FROM users WHERE user = '$username'";
+    $resultuser = mysqli_query($conn, $sqluser);
+    if ($resultuser) {
+        $row = mysqli_fetch_assoc($resultuser);
+        if ($row['count_user'] > 0) {
+            //Usuário ja existente
+            header('Location: register.php?error=1');
+            exit();
+        }
+    } else {
+        //Erro no sql
+        header('Location: register.php?error=3');
+        exit();
+    }
+
+    $sqlemail = "SELECT COUNT(*) AS count_email FROM users WHERE email = '$email'";
+    $resultemail = mysqli_query($conn, $sqlemail);
+    if ($resultemail) {
+        $row = mysqli_fetch_assoc($resultemail);
+        if ($row['count_email'] > 0) {
+            //E-mail ja existente
+            header('Location: register.php?error=2');
+            exit();
+        }
+    } else {
+        //Erro no sql
+        header('Location: register.php?error=3');
+        exit();
+    }
+
+
+
+    if (empty($username) || empty($email) || empty($password) || empty($cpassword) || ($username_length) < 3 || ($password_length) < 8) {
+        //Preencha todos os campos corretamente
+        header('Location: register.php?error=4');
+        exit();
+    } else {
+        if ($password != $cpassword) {
+            //Senhas diferem
+            header('Location: register.php?error=5');
+            exit();
+        }
+        
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (user, email, password) VALUES ('$username', '$email', '$hash')";
+        try {
+            mysqli_query($conn, $sql);
+            //Cadastro bem sucedido
+            header('Location: login.php');
+            exit();
+        } catch (mysqli_sql_exception $e) {
+            //Erro no sql
+            header('Location: register.php?error=3');
+            exit();
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,36 +114,36 @@ if(isset($_SESSION['id']) && isset($_SESSION['user'])){
         <div class="formlogin-container">
             <div class="titulologin text-center">
                 <h1>CADASTRO</h1>
-                <div id="user-error">Usuário já está sendo usado!</div>
-                <div id="email-error">Email já está sendo usado!</div>
-                <div id="sql-error">Ocorreu um erro.</div>
-                <div id="empty-error">Preencha todos os campos!</div>
-                <div id="password-error">As senhas devem ser compatíveis!</div>
+                <div id="user-error"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i></i>Usuário já está sendo usado!</div>
+                <div id="email-error"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i></i>Email já está sendo usado!</div>
+                <div id="sql-error"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i></i>Ocorreu um erro.</div>
+                <div id="empty-error"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i></i>Preencha todos os campos corretamente!</div>
+                <div id="password-error"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i></i>As senhas devem ser compatíveis!</div>
             </div>
 
-            <form id="form" action="register.php" method="POST">
+            <form id="form" action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST">
                 <div class="campo">
                     <label id="lblusuario">Usuário:</label>
                     <div class="text-center"><input class="inputtxt required" type="text" id="usuario" name="user" autocomplete="off" oninput="nameValidate()"></div>
-                    <span class="span-required">Usuário deve ter no mínimo 3 caracteres.</span>
+                    <span class="span-required"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i></i>Usuário deve ter no mínimo 3 caracteres.</span>
                 </div>
                 
                 <div class="campo">
                     <label id="lblemail">E-mail:</label>
                     <div class="text-center"><input class="inputtxt required" type="email" id="email" name="email" autocomplete="off" oninput="emailValidate()"></div>
-                    <span class="span-required">Digite um e-mail válido.</span>
+                    <span class="span-required"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i></i>Digite um e-mail válido.</span>
                 </div>
                 
                 <div class="campo password-container">
                     <label class="lblsenha">Senha:</label>
                     <div class="text-center"><input class="inputtxt required" type="password" id="senha" name="password" oninput="mPasswordValidate()"></div>
                     <ion-icon name="eye-outline" id="eye"></ion-icon>
-                    <span class="span-required">Senha deve conter no mínimo 8 caracteres.</span>
+                    <span class="span-required"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i></i>Senha deve conter no mínimo 8 caracteres.</span>
                 </div>
                 <div class="campo">
                     <label class="lblsenha">Confirmar senha:</label>
                     <div class="text-center"><input class="inputtxt required" type="password" name="cpassword" id="confirmarsenha" oninput="comparePassword()"></div>
-                    <span class="span-required">As senhas devem ser compatíveis.</span>
+                    <span class="span-required"><i class="fa-solid fa-circle-exclamation fa-sm">&nbsp;&nbsp;</i>As senhas devem ser compatíveis!</span>
                 </div>
                 <div class="text-center botoes">
                     <input class="" id="submit" type="submit" value="Cadastrar">
@@ -104,67 +171,4 @@ if(isset($_SESSION['id']) && isset($_SESSION['user'])){
 </body>
 </html>
 
-<?php
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = $_POST['user'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
-    $cpassword = $_POST['cpassword'];
-
-    $sqluser = "SELECT COUNT(*) AS count_user FROM users WHERE user = '$username'";
-    $resultuser = mysqli_query($conn, $sqluser);
-    if ($resultuser) {
-        $row = mysqli_fetch_assoc($resultuser);
-        if ($row['count_user'] > 0) {
-            //Usuário ja existente
-            header('Location: register.php?error=1');
-            exit();
-        }
-    } else {
-        //Erro no sql
-        header('Location: register.php?error=3');
-        exit();
-    }
-
-    $sqlemail = "SELECT COUNT(*) AS count_email FROM users WHERE email = '$email'";
-    $resultemail = mysqli_query($conn, $sqlemail);
-    if ($resultemail) {
-        $row = mysqli_fetch_assoc($resultemail);
-        if ($row['count_email'] > 0) {
-            //E-mail ja existente
-            header('Location: register.php?error=2');
-            exit();
-        }
-    } else {
-        //Erro no sql
-        header('Location: register.php?error=3');
-        exit();
-    }
-
-    if (empty($username) || empty($email) || empty($password) || empty($cpassword)) {
-        header('Location: register.php?error=4');
-        exit();
-    } else {
-        if ($password != $cpassword) {
-            //Senhas diferem
-            header('Location: register.php?error=5');
-            exit();
-        }
-        
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users (user, email, password) VALUES ('$username', '$email', '$hash')";
-        try {
-            mysqli_query($conn, $sql);
-            //Cadastro bem sucedido
-            header('Location: login.php');
-            exit();
-        } catch (mysqli_sql_exception $e) {
-            //Erro no sql
-            header('Location: register.php?error=3');
-            exit();
-        }
-    }
-}
-
-mysqli_close($conn);
-?>
+<?php mysqli_close($conn);?>

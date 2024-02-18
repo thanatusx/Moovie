@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@700&family=Manrope:wght@300;500;800&family=Poppins:ital,wght@0,300;0,500;0,600;0,700;1,900&display=swap');
+
+:root{
+    --place: #aaaaaa;
+    --rosa: #b70040;
+    --magenta: #770652;
+    --white: #ffffff;
+    --platinum: #d8d8d8;
+    --indigo: #061641;
+    --laranja: #ff7900;
+    --roxo: #321744;
+    --rich-black: #03071e;
+    --chocolate-cosmos: #370617;
+    --rosewood: #6a040f;
+    --penn-red: #9d0208;
+    --engineering-orange: #d00000;
+    --sinopia: #dc2f02;
+    --persimmon: #e85d04;
+    --princeton-orange: #f48c06;
+    --orange-web: #faa307;
+    --selective-yellow: #ffba08;
+}
+
+.conteudoperfil{
+    background-color: var(--rich-black);
+    border-radius: 15px;
+    border: 3px solid var(--selective-yellow);
+    display: flex;
+    margin: 75px;
+}
+
+.pfp{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+}
+
+.data{
+    margin: 40px 40px;
+    width: 940px;
+}
+
+.name h1{
+    font: 900 36px "Poppins", sans-serif;
+    color: var(--white);
+    margin: 0;
+}
+
+.bio p{
+    font: 400 20px/32px "inter", sans-serif;
+    color: var(--white);
+}
+
+.header-data{
+    margin-top: 36px;
+}
+
+.header-data a{
+    background-color: var(--rosewood);
+    border-radius: 15px;
+    padding: 3px 12px;
+    color: var(--platinum);
+    font: 900 18px/34px "Poppins", sans-serif;
+    height: 40px;
+    margin: 8px 0 0 40px;
+}
+
+.header-data a:hover{
+    background-color: var(--platinum);
+    color: var(--rosewood);
+    transition: .4s;
+}
+
+
+.logout a{
+    background-color: var(--rosewood);
+    border-radius: 15px;
+    padding: 5px 15px;
+    color: var(--platinum);
+    font: 900 18px/30px "Poppins", sans-serif;
+    height: 35px;
+    margin: 0 0 0 0;
+}
+
+.logout a:hover{
+    background-color: var(--platinum);
+    color: var(--rosewood);
+    transition: .4s;
+}
+
+/* EDIT PROFILE */
+
+.edit-pfp input{
+    background-color: var(--indigo);
+    outline: none;
+    border: 2px solid var(--chocolate-cosmos);
+    border-radius: 5px;
+    padding: 12px 0px 12px 10px;
+    font: 500 18px/20px "Inter", sans-serif;
+    color: var(--white);
+    margin: 10px 0;
+}
+
+.edit-pfp input:focus{
+    border: 2px solid var(--white);
+    transition: .3s;
+}
+
+.bio input {
+    background-color: var(--indigo);
+    outline: none;
+    border: 2px solid var(--chocolate-cosmos);
+    border-radius: 5px;
+    font: 400 20px/32px "inter", sans-serif;
+    color: var(--white);
+    padding: 12px 0 12px 10px;
+    width: 850px;
+}
+
+.bio input:focus{
+    border: 2px solid var(--platinum);
+    transition: .3s;
+}
+
+.bio input::placeholder{
+    color: var(--platinum);
+}
+
+.save input{
+    background-color: var(--rosewood);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 25px;
+    color: var(--platinum);
+    margin-top: 10px;
+    font: 500 20px/30px "Poppins", sans-serif;
+}
+
+.save input:hover{
+    background-color: var(--platinum);
+    color: var(--rosewood);
+    transition: .4s;
+}
+
+.edit-pfp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+.edit-pfp button{
+    background-color: var(--rosewood);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: var(--platinum);
+    margin: 10px 0 0 10px;
+    font: 500 16px/20px "Poppins", sans-serif;
+    height: 45px;
+}
+
+.edit-pfp button:hover{
+    background-color: var(--platinum);
+    color: var(--rosewood);
+    transition: .4s;
+}
+
+.edit-pfp input::placeholder{
+    color: var(--platinum);
+}
+
+.span-required{
+    display: none;
+    color: var(--engineering-orange);
+    font: 400 14px "Inter", sans-serif;
+    margin: 0 0 0 3px;
+}

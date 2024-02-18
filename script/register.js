@@ -45,8 +45,6 @@ const form = document.getElementById('form');
 const campos = document.querySelectorAll('.required');
 const spans = document.querySelectorAll('.span-required');
 const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-let allFieldsValidated = false;
-
 
 function setError(index){
     campos[index].style.border = '2px solid #d00000';

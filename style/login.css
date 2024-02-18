@@ -139,7 +139,7 @@
     color: var(--platinum);
     margin: 0 20px 0 0;
     font: 500 20px/30px "Poppins", sans-serif;
-    }
+}
 
 .formlogin-container #submit:hover{
     background-color: var(--magenta);
