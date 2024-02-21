@@ -13,6 +13,6 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
         };
         reader.readAsDataURL(file);
     } else {
-        preview.innerHTML = '';
+        preview.innerHTML = '<img src="images/pfp/user.jpg" alt="Imagem Padrão" width="300" height="300">';
     }
 });

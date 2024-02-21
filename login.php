@@ -31,7 +31,7 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
                 }
                 
                 if (empty($row['pfp'])) {
-                    $_SESSION['pfp'] = "images/pfp/user.webp";
+                    $_SESSION['pfp'] = "images/pfp/user.jpg";
                 } else {
                     $_SESSION['pfp'] = $row['pfp'];
                 }

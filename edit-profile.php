@@ -2,7 +2,7 @@
 include("conexao.php");
 session_start();
 
-if(!isset($_SESSION['id']) && !isset($_SESSION['user'])){
+if(!isset($_SESSION['id']) || !isset($_SESSION['user'])){
     header("Location: login.php");
     exit();
 }
@@ -33,21 +33,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if ($result) {
         $_SESSION['bio'] = $bio;
         $_SESSION['pfp'] = $uploadPath ?? $_SESSION['pfp'];
-        
-        if (!empty($old_pfp_path)) {
-            unlink($old_pfp_path);
-        }
 
+        if (!empty($old_pfp_path) && $old_pfp_path !== "images/pfp/user.jpg") {
+            if (!isset($uploadPath)) {
+                $_SESSION['pfp'] = $old_pfp_path;
+            } else {
+                unlink($old_pfp_path);
+            }
+        }
         header("Location: profile.php");
-        exit();
     } else {
-        // Falha na atualização
+        // Falha na atualização ou inserção
         header("Location: edit-profile.php?error=1");
         exit();
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -105,20 +106,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <section class="secao-perfil">
         <div class="conteudoperfil container">
-            <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST" enctype="multipart/form-data">
+            <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST" enctype="multipart/form-data" class="d-flex">
                 <div class="edit-pfp">
-                    <input type="file" id="fileInput" name="file" accept="image/*">
-                    <div id="preview"></div>
+                    <input class="d-none" type="file" id="fileInput" name="file" accept="image/*">
+                    <div id="preview">
+                        <img src="<?php echo $_SESSION['pfp'];?>" alt="Imagem Padrão" width="250" height="250">
+                    </div>
+                    <div class="btn-pfp d-flex">
+                        <label for="fileInput"><i class="fa-solid fa-image fa-sm"></i>&nbsp;&nbsp;SELECIONAR FOTO</label>
+                        <a href="remove-pfp.php"><i class="fa-solid fa-trash fa-sm"></i></i></a>
+                    </div>
                 </div>
                 <div class="data">
                     <div class="name header-data d-flex">
                         <h1><?php echo $_SESSION['user'];?></h1>
                     </div>
                     <div class="bio mt-3">
-                        <input type="text" name="bio" maxlength="255" placeholder="Biografia..." value="<?php echo $_SESSION['bio']; ?>">
+                        <input autocomplete="off" type="text" name="bio" maxlength="255" value="<?php echo $_SESSION['bio']; ?>">
                     </div>
                     <div class="save">
-                        <input type="submit" value="SALVAR">
+                        <input type="submit" value="SALVAR"></input>
                     </div>
                 </div>
             </form>

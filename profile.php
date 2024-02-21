@@ -73,10 +73,10 @@
         </nav>
     </header>
 
-    <section class="secao-perfil">
-        <div class="conteudoperfil container">
+    <section class="secao-perfil container">
+        <div class="conteudoperfil">
             <div class="pfp">
-                <img class="rounded-circle" src="<?php echo $_SESSION['pfp'];?>" alt="Foto de perfil" width="300">
+                <img class="rounded-circle" src="<?php echo $_SESSION['pfp'];?>" alt="Foto de perfil" width="300" height="300">
             </div>
             <div class="data">
                 <div class="name header-data d-flex">
@@ -91,7 +91,6 @@
                     <a href="logout.php"><i class="fa-solid fa-right-from-bracket fa-xs"></i>&nbsp;&nbsp;LOG OUT</a>
                 </div>
             </div>
-            
         </div>
     </section>
     <!-- BIBLIOTECA PERSONALIZADA -->

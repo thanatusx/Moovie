@@ -24,47 +24,50 @@
 .conteudoperfil{
     background-color: var(--rich-black);
     border-radius: 15px;
-    border: 3px solid var(--selective-yellow);
+    outline: 3px solid var(--selective-yellow);
     display: flex;
-    margin: 75px;
+    height: 340px;
+    width: 850px;
+    margin-top: 100px;
 }
 
 .pfp{
-    display: flex;
+    display: block;
     align-items: center;
     width: 300px;
     height: 300px;
     margin: 20px;
 }
 
+.pfp img{
+    outline: 3px solid var(--selective-yellow);
+    object-fit: cover;
+}
+
 .data{
-    margin: 40px 40px;
-    width: 940px;
+    margin: 0px 40px;
+}
+
+.header-data{
+    height: 50px;
+    margin-top: 70px;
 }
 
 .name h1{
     font: 900 36px "Poppins", sans-serif;
     color: var(--white);
-    margin: 0;
-}
-
-.bio p{
-    font: 400 20px/32px "inter", sans-serif;
-    color: var(--white);
-}
-
-.header-data{
-    margin-top: 36px;
 }
 
 .header-data a{
     background-color: var(--rosewood);
-    border-radius: 15px;
-    padding: 3px 12px;
+    border-radius: 10px;
+    padding: 0px 12px;
     color: var(--platinum);
-    font: 900 18px/34px "Poppins", sans-serif;
-    height: 40px;
-    margin: 8px 0 0 40px;
+    font: 900 18px "Poppins", sans-serif;
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-data a:hover{
@@ -73,15 +76,26 @@
     transition: .4s;
 }
 
+.bio{
+    height: 80px;
+    margin-top: 20px
+}
+
+.bio p{
+    font: 400 20px/32px "inter", sans-serif;
+    color: var(--white);
+}
+
+.logout{
+    margin-top: 60px;
+}
 
 .logout a{
     background-color: var(--rosewood);
-    border-radius: 15px;
-    padding: 5px 15px;
+    border-radius: 10px;
+    padding: 10px 15px;
     color: var(--platinum);
-    font: 900 18px/30px "Poppins", sans-serif;
-    height: 35px;
-    margin: 0 0 0 0;
+    font: 900 18px "Poppins", sans-serif;
 }
 
 .logout a:hover{
@@ -129,13 +143,13 @@
 }
 
 .save input{
-    background-color: var(--rosewood);
     border: none;
-    border-radius: 5px;
-    padding: 10px 25px;
-    color: var(--platinum);
     margin-top: 10px;
-    font: 500 20px/30px "Poppins", sans-serif;
+    background-color: var(--rosewood);
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: var(--platinum);
+    font: 900 16px "Poppins", sans-serif;
 }
 
 .save input:hover{
@@ -150,33 +164,48 @@
     align-items: center;
     width: 300px;
     height: 300px;
-    margin-top: 20px;
 }
 
-.edit-pfp button{
+.btn-pfp label{
     background-color: var(--rosewood);
-    border: none;
     border-radius: 5px;
     padding: 10px 10px;
     color: var(--platinum);
-    margin: 10px 0 0 10px;
-    font: 500 16px/20px "Poppins", sans-serif;
-    height: 45px;
+    font: 900 16px "Poppins", sans-serif;
+    cursor: pointer;
 }
 
-.edit-pfp button:hover{
+.btn-pfp label:hover{
     background-color: var(--platinum);
     color: var(--rosewood);
     transition: .4s;
 }
 
-.edit-pfp input::placeholder{
+.btn-pfp a{
+    background-color: var(--rosewood);
+    border-radius: 5px;
+    padding: 10px 20px;
     color: var(--platinum);
+    font: 900 20px "Poppins", sans-serif;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.span-required{
-    display: none;
-    color: var(--engineering-orange);
-    font: 400 14px "Inter", sans-serif;
-    margin: 0 0 0 3px;
+.btn-pfp a:hover{
+    background-color: var(--platinum);
+    color: var(--rosewood);
+    transition: .4s;
+}
+
+#preview img{
+    display: block;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin: 20px 20px 15px 20px;
+    outline: 3px solid var(--selective-yellow);
+    object-fit: cover;
 }
